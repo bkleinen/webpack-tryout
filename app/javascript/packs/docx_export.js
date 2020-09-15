@@ -6,13 +6,6 @@ const fs = require('fs');
 const { Document, Packer, Paragraph, TextRun } = require('docx');
 const DOCX = require('docx');
 
-function fetch_course(course_id) {
-  $.get("courses/" + course_id + ".json", function(fetched_course) {
-    return fetched_course;
-    // console.log(fetched_course);
-    // get courses of program
-  });
-}
 console.log(Document);
 console.log(DOCX);
 function export_docx() {
@@ -50,31 +43,4 @@ function export_docx() {
 
 
 
-
-// ---------------------------------------
-let program, course_programs;
-
-$(document).ready(function() {
-  $('a#docx_export_link').on(
-    'click',
-    function(event) {
-      var program_id = $(this).attr("data-id");
-      // get the program
-      $.get("programs/" + program_id + ".json", function(fetched_program) {
-        program = fetched_program;
-        // console.log(program);
-        // get course-program-links
-        $.get("course_programs.json", { program_id: program_id }, function(fetched_course_programs) {
-          course_programs = fetched_course_programs;
-          // course_programs.forEach((course_program, i) => {
-          //   console.log(course_program);
-          // });
-          // get courses of program
-        });
-      })
-      event.preventDefault();
-      console.log("got data");
       export_docx();
-    }
-  );
-});
