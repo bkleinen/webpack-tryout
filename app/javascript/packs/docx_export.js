@@ -10,6 +10,10 @@ console.log(Document);
 console.log(DOCX);
 function export_docx() {
   // Create document
+    console.log("fs");
+      console.log(fs);
+
+  console.log("Document");
   console.log(Document);
   const doc = new Document();
   // Documents contain sections, you can have multiple sections per document, go here to learn more about sections
