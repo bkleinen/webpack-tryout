@@ -4,9 +4,12 @@
     <title>WebpackTryout</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
+    <script src="docx/index.js"></script>
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_pack_tag 'hello_react', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_pack_tag 'docx_export', 'data-turbolinks-track': 'reload' %>
+
   </head>
 
   <body>

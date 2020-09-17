@@ -1,34 +1,40 @@
 // const docx = require('docx');
+import fs from 'fs';
 //import { Document, Packer, Paragraph, TextRun } from 'docx';
+//import DOCX from 'docx';
 // import * as docx from "docx";
 // import { saveAs } from 'FileSaver';
-const fs = require('fs');
-const { Document, Packer, Paragraph, TextRun } = require('docx');
-const DOCX = require('docx');
+//const fs = require('fs');
+//const { Document, Packer, Paragraph, TextRun } = require('docx');
+//const DOCX = require('docx');
 
-console.log(Document);
-console.log(DOCX);
+
+console.log("docx");
+console.log(docx);
+console.log("docx.Document");
+console.log(docx.Document);
+
 function export_docx() {
   // Create document
     console.log("fs");
       console.log(fs);
 
   console.log("Document");
-  console.log(Document);
-  const doc = new Document();
+  console.log(docx.Document);
+  const doc = new docx.Document();
   // Documents contain sections, you can have multiple sections per document, go here to learn more about sections
   // This simple example will only contain one section
   doc.addSection({
     properties: {},
     children: [
-      new Paragraph({
+      new docx.Paragraph({
         children: [
-          new TextRun('Hello World'),
-          new TextRun({
+          new docx.TextRun('Hello World'),
+          new docx.TextRun({
             text: 'Foo Bar',
             bold: true,
           }),
-          new TextRun({
+          new docx.TextRun({
             text: '\tGithub is the best',
             bold: true,
           }),
@@ -37,9 +43,9 @@ function export_docx() {
     ],
   });
   // Used to export the file into a .docx file
-  Packer.toBlob(doc).then((blob) => {
+  docx.Packer.toBlob(doc).then((blob) => {
     // saveAs from FileSaver will download the file
-    saveAs(blob, 'example.docx');
+    docx.saveAs(blob, 'example.docx');
   });
   // Done!
 }
